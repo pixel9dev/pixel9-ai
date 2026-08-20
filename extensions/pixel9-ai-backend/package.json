@@ -1,0 +1,61 @@
+{
+  "name": "pixel9-ai-backend",
+  "displayName": "Pixel9 AI LLM Backend",
+  "description": "LLM Provider implementation for Ollama and Gemini",
+  "version": "1.0.0",
+  "publisher": "pixel9",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Machine Learning"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "chatParticipants": [
+      {
+        "id": "pixel9.chat",
+        "name": "pixel9",
+        "description": "Pixel9 AI Assistant",
+        "isDefault": true
+      }
+    ],
+    "commands": [
+      {
+        "command": "pixel9.ai.connect",
+        "title": "Pixel9 AI: Connect to Local LLM"
+      }
+    ],
+    "configuration": {
+      "title": "Pixel9 AI",
+      "properties": {
+        "pixel9.ai.provider": {
+          "type": "string",
+          "enum": [
+            "ollama",
+            "gemini"
+          ],
+          "default": "ollama",
+          "description": "Select the LLM provider to use."
+        },
+        "pixel9.ai.ollamaModel": {
+          "type": "string",
+          "default": "llama3",
+          "description": "The default Ollama model to use."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.1.3"
+  }
+}
